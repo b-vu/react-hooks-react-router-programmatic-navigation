@@ -10,14 +10,19 @@ function App() {
 
   return (
     <div>
-      <Navbar setIsLoggedIn={setIsLoggedIn} />
+      <Navbar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
       <Switch>
         <Route exact path="/about">
           <About />
         </Route>
-        <Route exact path="/login">
-          <Login setIsLoggedIn={setIsLoggedIn} />
-        </Route>
+        {
+          isLoggedIn ? 
+          null
+          :
+          <Route exact path="/login">
+            <Login setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
+          </Route>
+        }
         <Route exact path="/">
           <Home isLoggedIn={isLoggedIn} />
         </Route>
